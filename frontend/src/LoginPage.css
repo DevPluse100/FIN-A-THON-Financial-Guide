@@ -1,0 +1,68 @@
+/* Center the form in the middle of the screen */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4; /* Light background */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Form styling */
+.login-form {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Input fields */
+.login-form input {
+    width: 100%;
+    padding: 1rem;
+    margin: 0.8rem 0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: #f0f8ff; /* Light blue background */
+    color: #333;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.login-form input:focus {
+    outline: none;
+    background-color: #e0f7fa; /* Lighter blue when focused */
+    border-color: #007bff; /* Change border color when focused */
+}
+
+/* Button styling */
+.login-form button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 100%;
+}
+
+.login-form button:hover {
+    background-color: #4caf50;
+    transform: translateY(-2px);
+}
+
+/* Form heading */
+.login-form h2 {
+    margin-bottom: 1rem;
+    color: #333;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}

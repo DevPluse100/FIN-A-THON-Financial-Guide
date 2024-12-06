@@ -1,0 +1,95 @@
+/* Center the form in the middle of the screen */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('your-background-image.jpg') no-repeat center center fixed; /* Add a background image if desired */
+    background-size: cover; /* Ensure the background image covers the entire viewport */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Glassmorphism Effect on the form */
+.register-form {
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+    backdrop-filter: blur(10px); /* Apply blur to background */
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Deep shadow for better visibility */
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Soft border with transparency */
+}
+
+/* Input fields */
+.register-form input {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.8rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.4); /* Transparent border */
+    border-radius: 10px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.5); /* Slightly transparent background */
+    color: #333;
+    transition: background 0.3s ease;
+}
+
+.register-form input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.7); /* Darken background on focus */
+    border-color: #007bff; /* Blue border on focus */
+}
+
+/* Button styling */
+.register-form button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.register-form button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px); /* Add slight lift effect on hover */
+}
+
+/* Form heading */
+.register-form h2 {
+    margin-bottom: 1rem;
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+/* Add a subtle animation effect on form load */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.register-form {
+    animation: slideIn 0.5s ease-out;
+}
+
+/* Optional: Add an overlay to make the background image more visible */
+.register-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4); /* Darken the background */
+    z-index: -1; /* Ensure overlay is behind the form */
+}

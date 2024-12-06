@@ -1,0 +1,246 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Home container */
+.home1 {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f4f4f4; /* Set a default background color */
+}
+
+/* Navbar Styles */
+.main-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background-color: #4caf50;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 80px;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.main-navbar .navbar-left .logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.main-navbar .navbar-right {
+  display: flex;
+  gap: 10px;
+}
+
+.main-navbar .navbar-item {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.main-navbar .navbar-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 250px;
+  background-color: #4caf50;
+  color: white;
+  padding: 20px;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sidebar .profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.sidebar .profile-icon {
+  font-size: 40px;
+}
+
+.sidebar .profile-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.sidebar .menu {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.sidebar .menu li {
+  padding: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.sidebar .menu li:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+}
+
+/* Main Content Styles */
+.content {
+  display: flex;
+  margin-top: 80px;
+  padding-left: 250px;
+  padding-right: 20px;
+  width: 100%;
+  height: calc(100vh - 80px);
+}
+
+.main-content {
+  flex-grow: 1;
+  margin-left: 20px;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Slideshow Styles */
+.slideshow {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.slide-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain; /* Changed to contain for better scaling */
+  border-radius: 10px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide-image:hover {
+  transform: scale(1.05);
+}
+
+.slide-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.slide-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.slide-button:hover {
+  background-color: #4caf50;
+}
+
+/* Navbar - Right Section */
+.main-navbar .navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.navbar-search {
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  background-color: transparent;
+  color: #333;
+  outline: none;
+}
+
+.navbar-search:focus {
+  border-color: white;
+}
+
+.navbar-logout {
+  padding: 8px 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.navbar-logout:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar-item {
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.navbar-item:hover {
+  background-color: #f1f1f1;
+  border-radius: 5px;
+}
+
+.content {
+  margin-top: 100px;
+}
+
+@media (max-width: 768px) {
+  .main-navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+  }
+
+  .main-navbar .navbar-right {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .sidebar {
+    width: 200px;
+    padding: 15px;
+  }
+
+  .sidebar .profile-icon {
+    font-size: 30px;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 10px;
+  }
+}
