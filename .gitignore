@@ -1,24 +1,2 @@
-# Node.js related files
-node_modules/
-npm-debug.log
-yarn-error.log
-
-# Environment variables
+node_modules
 .env
-.env.local
-.env.*.local
-
-# Build and temporary files
-dist/
-build/
-
-# OS generated files
-.DS_Store
-Thumbs.db
-.vscode/
-
-# IDE files (if applicable)
-.idea/
-
-# Logs
-*.log
