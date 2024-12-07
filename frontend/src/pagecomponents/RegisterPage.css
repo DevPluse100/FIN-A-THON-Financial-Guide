@@ -4,7 +4,8 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: url('your-background-image.jpg') no-repeat center center fixed; /* Add a background image if desired */
+    width: 100vw;
+    background: url('C:\Users\raksh\OneDrive\Desktop\React\hackethon\frontend\src\assets\backlogin.jpg') no-repeat center center fixed; 
     background-size: cover; /* Ensure the background image covers the entire viewport */
     font-family: 'Arial', sans-serif;
 }

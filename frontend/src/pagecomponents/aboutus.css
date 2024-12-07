@@ -1,0 +1,70 @@
+.about-us {
+    font-family: Arial, sans-serif;
+    color: #333;
+    padding: 20px;
+    line-height: 1.6;
+  }
+  
+  .about-section {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .about-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .about-section p {
+    font-size: 1.2rem;
+    margin: 0 auto;
+    max-width: 800px;
+  }
+  
+  .testimonials-section {
+    text-align: center;
+  }
+  
+  .testimonials-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .testimonials {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .testimonial {
+    max-width: 300px;
+    padding: 20px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .testimonial-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+  }
+  
+  .testimonial h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+  
+  .testimonial-role {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .testimonial-feedback {
+    font-size: 1rem;
+    font-style: italic;
+  }

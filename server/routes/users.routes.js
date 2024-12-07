@@ -1,11 +1,32 @@
+import express from "express";
+const app=express();
 import { Router } from "express";
-import {  login, register } from "../controllers/user.controller.js";
+import {  login, register,extract,findexp,addexp,healexp,addhelexp,
+Famexp,addfamexp,trackSummary, fetchActivityLogs } from "../controllers/user.controller.js";
 
 
 
-const router = Router();
+const route = express.Router();
 
-router.route("/login").post(login)
-router.route("/register").post(register)
+route.post("/login",login);
+route.post("/register",register);
 
-export default router;
+route.get("/extract",extract);
+
+route.get("/find",findexp);
+route.post("/addexp", addexp);
+
+route.get("/findheal",healexp);
+route.post("/addhealexp", addhelexp);
+
+route.get("/findfam",Famexp);
+route.post("/addfamexp", addfamexp);
+
+route.get("/summary", trackSummary); 
+route.get("/logs", fetchActivityLogs); 
+
+
+
+  
+
+export default route;

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './quiz.css'; // Import the CSS file
+import './quiz.css';
 
 const Quiz = () => {
   const quizData = [
@@ -95,7 +95,7 @@ const Quiz = () => {
     }
   ];
 
-  const [selectedAnswers, setSelectedAnswers] = useState([]);
+  const [selectedAnswers, setSelectedAnswers] = useState(Array(quizData.length).fill(null));
   const [score, setScore] = useState(null);
 
   const handleOptionChange = (questionIndex, selectedOption) => {
@@ -120,7 +120,7 @@ const Quiz = () => {
       <div id="quiz">
         {quizData.map((item, index) => (
           <div className="question" key={index}>
-            <p>{index + 1}. {item.question}</p>
+            <p>{index -2}. {item.question}</p>
             <div className="options">
               {item.options.map((option, i) => (
                 <label key={i}>
@@ -128,7 +128,7 @@ const Quiz = () => {
                     type="radio"
                     name={`question${index}`}
                     value={i}
-                    checked={selectedAnswers[index] === i}
+                    checked={selectedAnswers[index] === i || false}
                     onChange={() => handleOptionChange(index, i)}
                   />
                   {option}
@@ -141,7 +141,7 @@ const Quiz = () => {
       <button onClick={submitQuiz}>Submit</button>
       {score !== null && (
         <div className="result">
-          You scored {score} out of {quizData.length}!
+          You scored {score} out of {quizData.length-3}!
         </div>
       )}
     </div>

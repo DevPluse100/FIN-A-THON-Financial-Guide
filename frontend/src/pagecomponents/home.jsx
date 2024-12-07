@@ -1,44 +1,28 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";  // Ensure Link is imported
-import "../pages/home.css";
+import { Link, NavLink } from "react-router-dom";
+import "./home.css";
 
 const Home = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const slides = [
-    { image: "/photo1.png", url: "https://example.com/page1" },
-    { image: "/photo2.jpg", url: "https://example.com/page2" },
-    { image: "/photo3.jpeg", url: "https://example.com/page3" },
-    { image: "/photo4.avif", url: "https://example.com/page4" },
-    { image: "/photo5.jpg", url: "https://example.com/page5" },
-    { image: "/photo6.jpeg", url: "https://example.com/page6" },
-  ];
-
   const handleLogout = () => {
-    console.log("Logging out...");
-  };
-
-  const nextSlide = () => {
-    setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prevSlide) => (prevSlide - 1 + slides.length) % slides.length);
+    localStorage.removeItem("token"); // Clear the token
+    console.log("Logged out");
+    window.location.href = "/";
+    //window.location.href = "/login"; // Redirect to the login page
   };
 
   return (
     <div className="home1">
+      {/* Navbar */}
       <header className="main-navbar">
         <div>
-          <h1 style={{ color: "white" }}> Money Mastery</h1>
+          <h1 className="logo">Money Mastery</h1>
         </div>
         <div className="navbar-right">
-          <Link to="/home" className="navbar-item">Home</Link>  {/* Home page */}
-          <Link to="/home/quiz" className="navbar-item">Quiz</Link>  {/* Link to quiz */}
-          <Link to="/help" className="navbar-item">Mentor</Link>  {/* Help page */}
-          <Link to="/home/ebook" className="navbar-item">eBook</Link>  {/* Login page */}
-          {/* <Link to="/register" className="navbar-item">Register</Link>  Register page */}
-          Search <input
+          <Link to="/home" className="navbar-item">Home</Link>
+          <Link to="/home/quiz" className="navbar-item">Quiz</Link>
+          <Link to="/home/mentor" className="navbar-item">Mentor</Link>
+          <Link to="/home/ebook" className="navbar-item">eBook</Link>
+          <input
             type="text"
             className="navbar-search"
             placeholder="Search..."
@@ -47,40 +31,145 @@ const Home = () => {
         </div>
       </header>
 
+      {/* Content Area */}
       <div className="content">
+        {/* Sidebar */}
         <aside className="sidebar">
           <div className="profile">
             <div className="profile-icon">👤</div>
-            <p className="profile-name">Profile</p>
+            <p className="profile-name">John Doe</p>
           </div>
           <ul className="menu">
-            <li>Accounts</li>
-            <li>Agriculture</li>
-            <li>Family</li>
-            <li>Health</li>
-            <li>Calculator</li>
-            <li>Services</li>
-            <li>Refer and earn</li>
-            <li>Rewards</li>
+            <li>
+              <NavLink to="/home/accounts" className={({ isActive }) => (isActive ? "active" : "")}>
+                Accounts
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/home/agriculture" className={({ isActive }) => (isActive ? "active" : "")}>
+                Agriculture
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/home/family" className={({ isActive }) => (isActive ? "active" : "")}>
+                Family
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/home/health" className={({ isActive }) => (isActive ? "active" : "")}>
+                Health
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/home/calculator" className={({ isActive }) => (isActive ? "active" : "")}>
+                Calculator
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/home/services" className={({ isActive }) => (isActive ? "active" : "")}>
+                Services
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/home/refer" className={({ isActive }) => (isActive ? "active" : "")}>
+                Refer and Earn
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/home/rewards" className={({ isActive }) => (isActive ? "active" : "")}>
+                Rewards
+              </NavLink>
+            </li>
           </ul>
         </aside>
 
         <main className="main-content">
-          <div className="slideshow">
-            <a href={slides[currentSlide].url} className="slide">
-              <img
-                src={slides[currentSlide].image}
-                alt={`Slide ${currentSlide + 1}`}
-                className="slide-image"
-              />
-            </a>
-          </div>
+  {/* Article 1 */}
+  <div className="article-section">
+    <h2 className="article-title">The Art of Financial Literacy</h2>
+    <img
+      src="https://example.com/financial-literacy-image.jpg"
+      alt="Financial Literacy"
+      className="article-image"
+    />
+    <p className="article-content">
+      Financial literacy empowers individuals to make informed decisions about their finances. It encompasses budgeting, saving, investing, and managing debt effectively.
+    </p>
+    <a
+      href="https://www.investopedia.com/terms/f/financial-literacy.asp"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="article-link"
+    >
+      Read more on Investopedia
+    </a>
+  </div>
 
-          <div className="slide-controls">
-            <button onClick={prevSlide} className="slide-button">Previous</button>
-            <button onClick={nextSlide} className="slide-button">Next</button>
-          </div>
-        </main>
+  {/* Article 2 */}
+  <div className="article-section">
+    <h2 className="article-title">Building a Financial Plan</h2>
+    <img
+      src="https://example.com/financial-plan-image.jpg"
+      alt="Financial Plan"
+      className="article-image"
+    />
+    <p className="article-content">
+      A strong financial plan balances income, expenses, and future goals. It's key to achieving financial stability and success.
+    </p>
+    <a
+      href="https://www.nerdwallet.com/article/finance/how-to-make-a-financial-plan"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="article-link"
+    >
+      Read more on NerdWallet
+    </a>
+  </div>
+
+  {/* Article 3 */}
+  <div className="article-section">
+    <h2 className="article-title">Investing for Beginners</h2>
+    <img
+      src="https://example.com/investing-for-beginners-image.jpg"
+      alt="Investing"
+      className="article-image"
+    />
+    <p className="article-content">
+      Start investing with simple options like mutual funds or ETFs. Diversify your portfolio to manage risks effectively.
+    </p>
+    <a
+      href="https://www.thebalance.com/investing-101-5186452"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="article-link"
+    >
+      Read more on The Balance
+    </a>
+  </div>
+
+  {/* Article 4 */}
+  <div className="article-section">
+    <h2 className="article-title">Understanding Credit Scores</h2>
+    <img
+      src="https://example.com/credit-scores-image.jpg"
+      alt="Credit Scores"
+      className="article-image"
+    />
+    <p className="article-content">
+      Maintaining a good credit score ensures access to loans with favorable terms. Manage debts wisely and check your score regularly.
+    </p>
+    <a
+      href="https://www.creditkarma.com/advice/i/what-is-a-credit-score"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="article-link"
+    >
+      Read more on Credit Karma
+    </a>
+  </div>
+</main>
+
+
       </div>
     </div>
   );

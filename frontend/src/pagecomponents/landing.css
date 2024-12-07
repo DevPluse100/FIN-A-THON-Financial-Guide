@@ -5,99 +5,127 @@
   box-sizing: border-box;
 }
 
-/* General styles for the entire application */
 html, body {
   height: 100%;
-  overflow: auto; /* Allow scrolling for other pages */
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  font-family: 'Arial', sans-serif; /* Set font for better readability */
+  background-color: #f0f0f0; /* Light background color */
 }
 
 /* Home container for full background */
 .home {
-  min-height: 100vh; /* Ensure content fits at least the viewport height */
+  min-height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-image: url('../src/assets/image1.jpg'); /* Replace with your image path */
+  background-image: url('C:\Users\raksh\OneDrive\Desktop\React\hackethon\frontend\src\assets\1save.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   position: relative;
-  color: white;
-  overflow: hidden; /* Prevent additional scrollbars specific to this section */
+  color: black;
+  overflow: hidden;
+  padding: 0 20px; /* Prevent content from touching sides */
+}
+
+/* Overlay effect to improve text visibility */
+.home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for text readability */
+  z-index: 1;
+}
+
+/* Content container */
+.home > * {
+  position: relative;
+  z-index: 2; /* Above the overlay */
 }
 
 /* Header Section */
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Space out logo and navbar */
   align-items: center;
-  padding: 10px 50px;
-  position: fixed;
+  padding: 15px 30px;
+  position: fixed; /* Make header fixed at top */
   top: 0;
   left: 0;
+  right: 0;
   width: 100%;
-  height: 60px;
-  background-color: #4caf50;
-  z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  z-index: 3;
+  border-radius: 0px;
 }
 
+/* Logo styling: Align logo to the left */
 .logo-container h1 {
-  font-size: 28px;
+  font-size: 36px;
   font-weight: bold;
-  color: white;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Left align the logo */
 }
 
+.logo-container h1 .fa-wallet {
+  margin-right: 10px;
+  color: #ffdd57; /* Icon color */
+}
+
+/* Navbar styling */
 .header-navbar {
   display: flex;
-  gap: 15px;
+  gap: 20px;
+  justify-content: flex-end; /* Align items to the right */
+  align-items: center;
 }
 
 .navbar-item {
-  color: white;
+  color: #333;
   text-decoration: none;
   font-size: 16px;
   font-weight: bold;
-  padding: 8px 15px;
+  padding: 8px 20px;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar-item:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-}
-
-/* Logo Styling */
-.logo {
-  width: 120px;
-  height: auto;
-  margin-top: 80px;
+  background-color: rgba(59, 54, 200, 0.1);
+  color: #3b36c8;
 }
 
 /* Main Content Section */
 .landingMainContainer {
   text-align: center;
-  margin-top: 150px;
-  padding: 20px;
+  padding: 40px;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .landingMainContainer h1 {
-  font-size: 36px;
+  font-size: 40px;
   margin-bottom: 20px;
   color: white;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 .landingMainContainer p {
   font-size: 18px;
   margin-bottom: 25px;
   color: white;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 /* Call-to-action Button */
@@ -105,8 +133,8 @@ html, body {
   background-color: #ffdd57;
   color: #333;
   text-decoration: none;
-  padding: 12px 20px;
-  font-size: 16px;
+  padding: 15px 30px;
+  font-size: 18px;
   font-weight: bold;
   border-radius: 5px;
   transition: all 0.3s ease;
@@ -120,20 +148,37 @@ html, body {
 @media (max-width: 768px) {
   .header-navbar {
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     align-items: center;
   }
 
   .landingMainContainer h1 {
-    font-size: 28px;
+    font-size: 32px;
   }
 
   .landingMainContainer p {
+    font-size: 16px;
+  }
+
+  .cta-button {
+    font-size: 16px;
+    padding: 12px 25px;
+  }
+}
+
+/* Mobile First */
+@media (max-width: 480px) {
+  .logo-container h1 {
+    font-size: 28px;
+  }
+
+  .navbar-item {
     font-size: 14px;
+    padding: 5px 15px;
   }
 
   .cta-button {
     font-size: 14px;
-    padding: 10px 15px;
+    padding: 10px 20px;
   }
 }

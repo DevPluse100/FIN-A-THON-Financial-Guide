@@ -4,64 +4,102 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f4; /* Light background */
+    width: 100vw;
+    background-image:url("C:\Users\raksh\OneDrive\Desktop\React\hackethon\frontend\src\assets\backlogin.jpg") ;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+     /* Gradient background */
     font-family: 'Arial', sans-serif;
 }
 
 /* Form styling */
 .login-form {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 2rem;
+    background: rgba(255, 255, 255, 0.85); /* Slightly transparent white */
+    padding: 2rem 3rem;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     width: 100%;
     max-width: 400px;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    height: 50%;
 }
 
 /* Input fields */
 .login-form input {
     width: 100%;
     padding: 1rem;
-    margin: 0.8rem 0;
+    margin: 1rem 0;
     border: 1px solid #ddd;
-    border-radius: 10px;
+    border-radius: 12px;
     font-size: 1rem;
-    background-color: #f0f8ff; /* Light blue background */
+    background-color: #f9f9f9; /* Light gray background */
     color: #333;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    transition: all 0.3s ease-in-out;
 }
 
 .login-form input:focus {
     outline: none;
-    background-color: #e0f7fa; /* Lighter blue when focused */
-    border-color: #007bff; /* Change border color when focused */
+    background-color: #eaf4ff; /* Subtle blue when focused */
+    border-color: #2575fc; /* Bright blue border */
+    box-shadow: 0 0 8px rgba(37, 117, 252, 0.5);
 }
 
 /* Button styling */
 .login-form button {
-    background-color: #4caf50;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
     color: white;
     border: none;
     padding: 0.8rem 1.5rem;
-    border-radius: 5px;
+    border-radius: 25px;
     font-size: 1rem;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: all 0.3s ease-in-out;
     width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .login-form button:hover {
-    background-color: #4caf50;
-    transform: translateY(-2px);
+    background: linear-gradient(to right, #2575fc, #6a11cb);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(37, 117, 252, 0.5);
+}
+
+.login-form button:active {
+    transform: translateY(0);
+    box-shadow: none;
 }
 
 /* Form heading */
 .login-form h2 {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     color: #333;
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: bold;
     text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .login-form {
+        padding: 1.5rem 2rem;
+    }
+
+    .login-form h2 {
+        font-size: 1.5rem;
+    }
+
+    .login-form input {
+        font-size: 0.9rem;
+    }
+
+    .login-form button {
+        font-size: 0.9rem;
+        padding: 0.7rem 1.2rem;
+    }
 }
