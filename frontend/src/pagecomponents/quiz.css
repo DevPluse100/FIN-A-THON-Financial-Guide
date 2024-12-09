@@ -1,7 +1,7 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+  
+  padding-top: 0;
   background-color: #f9f9f9;
   color: #333;
   overflow-y: scroll;
@@ -9,7 +9,8 @@ body {
 
 .quiz-container {
   max-width: 600px;
-  margin: 20px auto;
+  margin-top: 80rem;
+  /* margin: 20px auto; */
   background: #fff;
   padding: 20px;
   border-radius: 10px;
@@ -52,7 +53,7 @@ h1 {
 
 button {
   display: block;
-  width: 100%;
+  width: 0;
   padding: 12px;
   background-color: #4CAF50;
   color: white;
@@ -68,4 +69,8 @@ button:hover {
 
 button:focus {
   outline: none;
+}
+.btn1{
+  width: 10rem;
+  margin-left: 11rem;
 }

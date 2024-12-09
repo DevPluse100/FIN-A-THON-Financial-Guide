@@ -1,0 +1,56 @@
+.table-container {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .glass-table {
+    width: 90%;
+    max-width: 800px;
+    border-collapse: collapse;
+    margin: 20px auto;
+    text-align: left;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.5));
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+  }
+  
+  .glass-table th {
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 12px 15px;
+    font-size: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .glass-table td {
+    padding: 10px 15px;
+    font-size: 18px;
+    color: #333;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.8);
+  }
+  
+  .glass-table tr:nth-child(even) {
+    background: rgba(240, 240, 240, 0.8);
+  }
+  
+  .glass-table tr:hover {
+    background: rgba(0, 123, 255, 0.1);
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .table-header {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #333;
+    font-family: Arial, sans-serif;
+  }
+  

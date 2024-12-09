@@ -30,11 +30,12 @@ html, body {
   /* Main Content Layout */
   .main-content {
     display: flex;
-    margin-left: 0px;
+    margin-left: 0px !important;
     margin-top: 0px;
     width: 100vw;
     max-width: 1200px;
     gap: 40px;
+    
   }
   
   /* Left Section */
@@ -89,7 +90,7 @@ html, body {
   .logs {
     display: grid;
     height: 100%; /* Take full height */
-    min-height: 50%;
+    min-height: 80%;
     grid-template-columns: repeat(3, 1fr); /* Three equal columns */
     gap: 20px;
     padding: 20px;
@@ -118,6 +119,7 @@ html, body {
   
   .log-block p {
     margin: 8px 0;
+    padding-top: 1rem !important;
     font-size: 14px;
     color: #333;
   }
@@ -128,7 +130,7 @@ html, body {
   /* Payment Links */
   .payment-links {
     text-align: center;
-    margin-top: 20%;
+    margin-top: 10%;
     padding-bottom: 0;
   }
   

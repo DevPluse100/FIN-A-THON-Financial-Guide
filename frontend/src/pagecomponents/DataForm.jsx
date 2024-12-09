@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "./formAgri.css"
 const DataForm = ({ onAddData }) => {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
@@ -28,7 +28,7 @@ const DataForm = ({ onAddData }) => {
       <h3>Add New Expenditure</h3>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Description:</label>
+          <label style={{fontSize:"1rem"}}>Description:</label>
           <input
             type="text"
             value={description}
@@ -37,7 +37,7 @@ const DataForm = ({ onAddData }) => {
           />
         </div>
         <div>
-          <label>Amount:</label>
+          <label style={{fontSize:"1rem"}} > Amount:</label>
           <input
             type="number"
             value={amount}
@@ -46,7 +46,7 @@ const DataForm = ({ onAddData }) => {
           />
         </div>
         <div>
-          <label>Expenditure:</label>
+          <label style={{fontSize:"1rem"}}>Expenditure:</label>
           <input
             type="number"
             value={expenditure}
@@ -54,7 +54,7 @@ const DataForm = ({ onAddData }) => {
             required
           />
         </div>
-        <button type="submit">Add</button>
+        <button type="submit" style={{width:"8rem",textAlign:"center",marginLeft:"6.5rem"}}>Add</button>
       </form>
     </div>
   );

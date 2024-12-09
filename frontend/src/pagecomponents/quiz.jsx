@@ -116,11 +116,11 @@ const Quiz = () => {
 
   return (
     <div className="quiz-container">
-      <h1>Personal Finance Quiz</h1>
+      <h1 style={{color:"#4caf50"}}>Personal Finance Quiz</h1>
       <div id="quiz">
         {quizData.map((item, index) => (
           <div className="question" key={index}>
-            <p>{index -2}. {item.question}</p>
+            <p>{index +1}. {item.question}</p>
             <div className="options">
               {item.options.map((option, i) => (
                 <label key={i}>
@@ -138,10 +138,10 @@ const Quiz = () => {
           </div>
         ))}
       </div>
-      <button onClick={submitQuiz}>Submit</button>
+      <button onClick={submitQuiz} className='btn1'>Submit</button>
       {score !== null && (
         <div className="result">
-          You scored {score} out of {quizData.length-3}!
+          You scored {score} out of {quizData.length}!
         </div>
       )}
     </div>

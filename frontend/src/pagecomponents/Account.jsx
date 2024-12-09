@@ -13,6 +13,7 @@ const Account = () => {
   const [summary, setSummary] = useState({});
   const [logs, setLogs] = useState({ generalLogs: [], healthLogs: [], familyLogs: [] });
 
+  // Fetch data for summary and logs
   useEffect(() => {
     const fetchSummary = async () => {
       try {
@@ -36,6 +37,7 @@ const Account = () => {
     fetchLogs();
   }, []);
 
+  // Prepare data for the chart
   const chartData = {
     labels: ["General", "Health", "Family"],
     datasets: [
@@ -53,7 +55,7 @@ const Account = () => {
 
   return (
     <div className="account-wrapper">
-        <h2>Hai😊,Welcome </h2>
+        <h2>Hai😊, Welcome</h2>
       <div className="main-content">
         {/* Left Section */}
         <div className="left-section">
@@ -80,23 +82,28 @@ const Account = () => {
 
       {/* Bottom Section */}
       <div className="bottom-section">
+        <h2>Activity Logs</h2>
         <div className="logs">
-          <h2>Activity Logs</h2>
+          <div className="log-block">
+            <h3>Agriculture Expenditure</h3>
+            {logs.generalLogs && logs.generalLogs.map((log, index) => (
+              <p key={index}>{log.description} - ₹{log.amount} on {new Date(log.date).toLocaleDateString()}</p>
+            ))}
+          </div>
 
-          <h3>Agriculture Expenditure</h3>
-          {logs.generalLogs.map((log, index) => (
-            <p key={index}>{log.description} - ₹{log.amount} on {new Date(log.date).toLocaleDateString()}</p>
-          ))}
+          <div className="log-block">
+            <h3>Health Expenditure</h3>
+            {logs.healthLogs && logs.healthLogs.map((log, index) => (
+              <p key={index}>{log.description} - ₹{log.amount} on {new Date(log.date).toLocaleDateString()}</p>
+            ))}
+          </div>
 
-          <h3>Health Expenditure</h3>
-          {logs.healthLogs.map((log, index) => (
-            <p key={index}>{log.description} - ₹{log.amount} on {new Date(log.date).toLocaleDateString()}</p>
-          ))}
-
-          <h3>Family Expenditure</h3>
-          {logs.familyLogs.map((log, index) => (
-            <p key={index}>{log.description} - ₹{log.amount} on {new Date(log.date).toLocaleDateString()}</p>
-          ))}
+          <div className="log-block">
+            <h3>Family Expenditure</h3>
+            {logs.familyLogs && logs.familyLogs.map((log, index) => (
+              <p key={index}>{log.description} - ₹{log.amount} on {new Date(log.date).toLocaleDateString()}</p>
+            ))}
+          </div>
         </div>
 
         <div className="payment-links">

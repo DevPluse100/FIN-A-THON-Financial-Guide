@@ -5,6 +5,7 @@ import { Expenditure, HealExp, FamExp } from "../models/trans.schema.js";
 import bcrypt,{hash} from "bcrypt";
 import axios from "axios";
 import crypto from  "crypto";
+import { console } from "inspector";
 
 
 const login=async(req,res)=>{
@@ -57,25 +58,25 @@ const register=async(req,res)=>{
 }
 
 
-const extract=async(req,res)=>
-{
-    try {
-        const response = await axios.get('https://run.mocky.io/v3/your-mock-id');
-        const extractedData = response.data.map(item => ({
-          name: item.name,
-          value: item.value,
-          date: new Date(item.date),
-        }));
-    
-        await DataModel.insertMany(extractedData);
-        res.status(200).send(extractedData);
-      } catch (err) {
-        console.error(err);
-        res.status(500).send({ error: 'Data extraction failed' });
-      }
-}
+// Fetch data from an external API and save to the database
+const extract = async (req, res) => {
+  try {
+    const response = await axios.get('https://run.mocky.io/v3/your-mock-id');
+    const extractedData = response.data.map(item => ({
+      name: item.name,
+      value: item.value,
+      date: new Date(item.date),
+    }));
 
+    await DataModel.insertMany(extractedData);
+    res.status(200).send(extractedData);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ error: 'Data extraction failed' });
+  }
+};
 
+// Fetch all expenditures
 const findexp = async (req, res) => {
   try {
     const expenditures = await Expenditure.find();
@@ -85,33 +86,43 @@ const findexp = async (req, res) => {
   }
 };
 
+// Add new expenditure (general expenditures)
 const addexp = async (req, res) => {
   try {
     const { description, amount, expenditure } = req.body;
 
     if (!description || amount == null || expenditure == null) {
-      return res
-        .status(400)
-        .json({ error: "Description, amount, and expenditure are required" });
+      return res.status(400).json({ error: "Description, amount, and expenditure are required" });
     }
 
-    // Calculate the adjusted amount
-    const adjustedAmount = amount - expenditure;
+    // Ensure expenditure doesn't exceed the amount
+    if (expenditure > amount) {
+      alert("Expenditure cannot exceed amount");
+      return res.status(400).json({ error: "Expenditure cannot exceed amount" });
+      
+    }
 
+    // Calculate adjusted amount
+    
+    const adjustedAmount = amount - expenditure;
+    
     const newExpenditure = new Expenditure({
       description,
-      amount: adjustedAmount, // Store the adjusted amount
+      amount,
       expenditure,
+      adjustedAmount, // Store the adjusted amount as a separate field
     });
 
-    const savedExpenditure = await newExpenditure.save();
+    console.log(newExpenditure);
 
+    const savedExpenditure = await newExpenditure.save();
     res.status(201).json(savedExpenditure);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
 };
 
+// Add new expenditure for health
 const healexp = async (req, res) => {
   try {
     const healthexp = await HealExp.find();
@@ -121,34 +132,41 @@ const healexp = async (req, res) => {
   }
 };
 
-
+// Add new health expenditure
 const addhelexp = async (req, res) => {
   try {
     const { description, amount, expenditure } = req.body;
 
     if (!description || amount == null || expenditure == null) {
-      return res
-        .status(400)
-        .json({ error: "Description, amount, and expenditure are required" });
+      return res.status(400).json({ error: "Description, amount, and expenditure are required" });
     }
 
-    // Calculate the adjusted amount
-    const adjustedAmount = amount - expenditure;
+        // Calculate adjusted amount
+        const adjustedAmount = amount - expenditure;
+
+    // Ensure expenditure doesn't exceed the amount
+    if (expenditure > amount) {
+      alert("Expenditure cannot exceed amount");
+      return res.status(400).json({ error: "Expenditure cannot exceed amount" });
+    }
+
+
 
     const newExpenditure = new HealExp({
       description,
-      amount: adjustedAmount, // Store the adjusted amount
+      amount,
       expenditure,
+      adjustedAmount,
     });
 
     const savedExpenditure = await newExpenditure.save();
-
     res.status(201).json(savedExpenditure);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
 };
 
+// Fetch family expenditure data
 const Famexp = async (req, res) => {
   try {
     const famexp = await FamExp.find();
@@ -158,14 +176,14 @@ const Famexp = async (req, res) => {
   }
 };
 
+// Add new family expenditure
 const addfamexp = async (req, res) => {
   try {
     const { description, amount, expenditure } = req.body;
 
-    if (!description || amount == null || expenditure == null) {
-      return res
-        .status(400)
-        .json({ error: "Description, amount, and expenditure are required" });
+    // Validate the input
+    if (!description || amount < 0 || expenditure < 0 || amount < expenditure) {
+      return res.status(400).json({ error: "Description, amount, and expenditure are required" });
     }
 
     // Calculate the adjusted amount
@@ -173,12 +191,12 @@ const addfamexp = async (req, res) => {
 
     const newExpenditure = new FamExp({
       description,
-      amount: adjustedAmount, // Store the adjusted amount
-      expenditure,
+      amount, // Store the original amount
+      expenditure, // Store the expenditure
+      adjustedAmount, // Store the adjusted amount
     });
 
     const savedExpenditure = await newExpenditure.save();
-
     res.status(201).json(savedExpenditure);
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -187,20 +205,19 @@ const addfamexp = async (req, res) => {
 
 const trackSummary = async (req, res) => {
   try {
-    // Total spent for each category
+    
     const [generalSpent, healthSpent, familySpent] = await Promise.all([
-      Expenditure.aggregate([{ $group: { _id: null, total: { $sum: "$amount" } } }]),
-      HealExp.aggregate([{ $group: { _id: null, total: { $sum: "$amount" } } }]),
-      FamExp.aggregate([{ $group: { _id: null, total: { $sum: "$amount" } } }]),
+      Expenditure.aggregate([{ $group: { _id: null, total: { $sum: "$adjustedAmount" } } }]),
+      HealExp.aggregate([{ $group: { _id: null, total: { $sum: "$adjustedAmount" } } }]),
+      FamExp.aggregate([{ $group: { _id: null, total: { $sum: "$adjustedAmount" } } }]),
     ]);
 
-    // Calculate totals
-    const totalSpent =
+    const totalSpent = 
       (generalSpent[0]?.total || 0) +
       (healthSpent[0]?.total || 0) +
       (familySpent[0]?.total || 0);
 
-    const initialBudget = 100000; // Example: Set an initial budget
+    const initialBudget = 10000; // Example initial budget
     const remainingBalance = initialBudget - totalSpent;
 
     res.status(200).json({
@@ -213,18 +230,23 @@ const trackSummary = async (req, res) => {
       },
     });
   } catch (err) {
+    console.error("Error in trackSummary:", err); // Debugging line
     res.status(500).json({ error: err.message });
   }
 };
 
+// Fetch all activity logs
 const fetchActivityLogs = async (req, res) => {
   try {
-    // Fetch all expenditure activity
     const [generalLogs, healthLogs, familyLogs] = await Promise.all([
       Expenditure.find(),
       HealExp.find(),
       FamExp.find(),
     ]);
+
+    console.log('General Logs:', generalLogs);
+    console.log('Health Logs:', healthLogs);
+    console.log('Family Logs:', familyLogs);
 
     res.status(200).json({
       activities: {
@@ -234,11 +256,22 @@ const fetchActivityLogs = async (req, res) => {
       },
     });
   } catch (err) {
+    console.error('Error in fetchActivityLogs:', err);
     res.status(500).json({ error: err.message });
   }
 };
 
 
-
-
-export {login,register,extract,findexp,addexp,healexp,addhelexp,Famexp,addfamexp,trackSummary, fetchActivityLogs};
+export { 
+  login, 
+  register, 
+  extract, 
+  findexp, 
+  addexp, 
+  healexp, 
+  addhelexp, 
+  Famexp, 
+  addfamexp, 
+  trackSummary, 
+  fetchActivityLogs 
+};

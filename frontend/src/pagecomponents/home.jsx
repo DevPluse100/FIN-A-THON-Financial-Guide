@@ -15,14 +15,14 @@ const Home = () => {
       {/* Navbar */}
       <header className="main-navbar">
         <div>
-          <h1 className="logo">Money Mastery</h1>
+          <h1 className="logo" style={{color:"white", paddingTop:"1.7rem"}}>Money Mastery</h1>
         </div>
         <div className="navbar-right">
           <Link to="/home" className="navbar-item">Home</Link>
           <Link to="/home/quiz" className="navbar-item">Quiz</Link>
           <Link to="/home/mentor" className="navbar-item">Mentor</Link>
           <Link to="/home/ebook" className="navbar-item">eBook</Link>
-          <input
+          Search<input
             type="text"
             className="navbar-search"
             placeholder="Search..."
@@ -88,7 +88,7 @@ const Home = () => {
   <div className="article-section">
     <h2 className="article-title">The Art of Financial Literacy</h2>
     <img
-      src="https://example.com/financial-literacy-image.jpg"
+      src="https://media.istockphoto.com/id/1372336229/vector/financial-literacy-and-education-with-learning-from-books-tiny-person-concept.jpg?s=612x612&w=0&k=20&c=pucvpl0uUbkUkpZDEkNYVIrFFPnDnQWX6gyHjnBiMRM="
       alt="Financial Literacy"
       className="article-image"
     />
@@ -109,7 +109,7 @@ const Home = () => {
   <div className="article-section">
     <h2 className="article-title">Building a Financial Plan</h2>
     <img
-      src="https://example.com/financial-plan-image.jpg"
+      src="https://www.corporatevision-news.com/wp-content/uploads/2022/01/Financial-Plan.jpg"
       alt="Financial Plan"
       className="article-image"
     />
@@ -130,7 +130,7 @@ const Home = () => {
   <div className="article-section">
     <h2 className="article-title">Investing for Beginners</h2>
     <img
-      src="https://example.com/investing-for-beginners-image.jpg"
+      src="https://akm-img-a-in.tosshub.com/businesstoday/images/story/201806/pixabay1%2B660_061118073914.jpg?size=948:533"
       alt="Investing"
       className="article-image"
     />
@@ -151,7 +151,7 @@ const Home = () => {
   <div className="article-section">
     <h2 className="article-title">Understanding Credit Scores</h2>
     <img
-      src="https://example.com/credit-scores-image.jpg"
+      src="https://appreciatewealth.com/blog/wp-content/uploads/2023/10/WHAT-IS-DEMAT-ACCOUNT-2-1024x577.png"
       alt="Credit Scores"
       className="article-image"
     />

@@ -14,7 +14,8 @@ import HealthDashboard from './pagecomponents/Healthdash.jsx';
 import Account from './pagecomponents/Account.jsx';
 import AboutUs  from './pagecomponents/Aboutus.jsx';
 import HelpSection from './pagecomponents/help.jsx';
-
+import Services from "./pagecomponents/services.jsx";
+import PizzaChefGame from './pagecomponents/rewards.jsx';
 
 
 
@@ -41,7 +42,8 @@ function App() {
                 <Route path="/home/accounts" element={<Account/>}/>
                 <Route path="/about-us" element={<AboutUs/>}/>
                 <Route path="/help" element={<HelpSection/>}/>
-                
+                <Route path="/home/services" element={<Services/>}/>
+                <Route path="/home/rewards" element={<PizzaChefGame/>}/>
             </Routes>
           
         </Router>

@@ -4,6 +4,7 @@
 .finance-stories-body {
     font-family: Arial, sans-serif;
     margin: 0;
+    margin-top: 35rem;
     padding: 0;
     background-color: #f4f4f9;
     color: #333;
@@ -64,6 +65,7 @@
   
   /* Main Content Styling */
   .finance-stories-main {
+    margin-top: 0rem;
     padding: 2rem;
   }
   
